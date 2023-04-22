@@ -8,7 +8,7 @@ export default function Advertising() {
 
   return (
     <section className={styles.advertising}>
-        <MediaQuery minWidth={768}>
+        <MediaQuery minWidth={786}>
             <img src={LogoText} className={styles.advertising__logoText}/>
         </MediaQuery>
         <div className={styles.advertising__contentContainer}>

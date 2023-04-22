@@ -1,3 +1,5 @@
+@import 'styles/variables.scss';
+
 .advertising {
     padding: 20px;
     display: flex;
@@ -13,9 +15,10 @@
     }
 
     &__text {
+        font-family: $mainFontFamily;
+        font-weight: 500;
         font-size: 17px;
         line-height: 21px;
-        font-weight: 500;
     }
 
     &__joinButton {
@@ -24,7 +27,7 @@
 
         margin-top: 20px;
 
-        font-style: normal;
+        font-family: $mainFontFamily;
         font-weight: 500;
         font-size: 18px;
         line-height: 22px;
@@ -38,9 +41,10 @@
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 786px) {
     .advertising {
         padding-top: 80px;
+        padding-bottom: 80px;
 
         &__contentContainer {
             flex-direction: row;
@@ -52,7 +56,13 @@
         &__text {
             width: 57%;
 
-            margin-right: 150px;
+            margin-right: 75px;
         }
+    }
+}
+
+@media (min-width: 1224px) {
+    .advertising__text {
+        margin-right: 150px;
     }
 }
