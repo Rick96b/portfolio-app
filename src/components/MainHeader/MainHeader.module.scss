@@ -1,0 +1,46 @@
+.mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px;
+
+    &__logoContainer {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 82.2px;
+            height: 30px;
+        }
+    }
+
+    &__authContainer {
+        display: flex;
+        align-items: center;
+
+        font-size: 16px;
+        line-height: 19.5px;
+        font-weight: 500;
+
+        img {
+            width: 16px;
+            height: 16px;
+
+            margin-right: 6.7px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .mainHeader {
+
+        &__logoContainer {
+
+            img {
+                width: 137px;
+                height: 50px;
+            }
+        }
+    }
+}
