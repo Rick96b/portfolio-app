@@ -11,20 +11,20 @@ export default function ProjectCard() {
     <article className={styles.projectCard}>
       <header className={styles.projectCard__header}>
         <p className={styles.projectCard__person}>
-          <img src={Person} className={styles.projectCard__personImg}/>
+          <img src={Person} className={styles.projectCard__personImg} alt='person'/>
           <span className={styles.projectCard__personName}>alexcoder007</span>
         </p>
         <p className={styles.projectCard__likes}>
-          <img src={Heart} className={styles.projectCard__likesImg}/>
+          <img src={Heart} className={styles.projectCard__likesImg} alt='likes'/>
           <span className={styles.projectCard__likesCount}>500</span>
         </p>
       </header>
       <main>
-        <img src={ProjectCardLogo} className={styles.projectCard__logo}/>
+        <img src={ProjectCardLogo} className={styles.projectCard__logo} alt='project logo'/>
         <div className={styles.projectCard__infoContainer}>
           <p className={styles.projectCard__link}>
-            <img src={Link} className={styles.projectCard__linkImg} />
-            <a href='#' className={styles.projectCard__linkText}>github</a>
+            <img src={Link} className={styles.projectCard__linkImg} alt='project link'/>
+            <a href='/' className={styles.projectCard__linkText}>github</a>
           </p>
           <p className={styles.projectCard__text}>
             CodeCraft: разработка инновационных решений с использованием передовых технологий
