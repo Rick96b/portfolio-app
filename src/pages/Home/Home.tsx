@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Advertising, Filter, MainHeader } from 'components'
+import { Advertising, Filter, MainHeader, ProjectCard } from 'components'
 import styles from './Home.module.scss';
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
         <MainHeader />
         <Advertising />
         <Filter />
+        <ProjectCard />
       </div>
     </div>
   )

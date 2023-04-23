@@ -1,0 +1,94 @@
+@import 'styles/variables.scss';
+
+.projectCard {
+
+    background-color: #fff;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+ 
+        padding: 10px 15px;
+    }
+
+    &__person {
+        display: flex;
+        align-items: center;
+    }
+
+    &__personImg {
+        margin-right: 6.7px;
+    }
+
+    &__personName {
+        font-family: $mainFontFamily;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px;
+    }
+
+    &__likes {
+        display: flex;
+        align-items: center;
+    }
+
+    &__likesImg {
+        margin-right: 5.7px;
+    }
+
+    &__likesCount {
+        font-family: $mainFontFamily;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px;
+    }
+
+    &__logo {
+        width: 100%;
+    }
+
+    &__infoContainer {
+        padding: 15px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+    }
+
+    &__linkImg {
+        margin-right: 5px;
+    }
+
+    &__linkText {
+        font-family: $mainFontFamily;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 16px;
+    }
+
+    &__text {
+        margin-top: 15px;
+
+        font-family: $mainFontFamily;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 18px;
+    }
+
+    &__technologyStackList {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        margin-top: 15px;
+    }
+
+    &__technologyStackItem {
+        padding: 4px 15px;
+
+        background: #D9D9D9;
+        border-radius: 50px;
+    }
+}
