@@ -9,15 +9,15 @@ export default function Filter() {
     <Form className={styles.filter}>
       <p className={styles.filter__name}>Новые проекты</p>
       <Form.Item
-        style={{marginBottom: "0"}}
+        className={styles.filter__formItem}
       >
         <Select 
           defaultValue='Все стеки'
           className={styles.filter__input}
         />
       </Form.Item>
-      <Form.Item
-        style={{marginBottom: "0", marginLeft: '40px'}}
+      <Form.Item 
+        className={styles.filter__formItem}
       >
         <Select 
           defaultValue='Сначала популярные'
