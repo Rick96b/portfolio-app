@@ -29,12 +29,10 @@
             font-family: $mainFontFamily !important;
             font-weight: 500 !important;
             font-size: 15px !important;
-            line-height: 18px !important;
         }
     }
 
     &__input > div {
-        display: block !important;
 
         color: #231F20 !important;
 
@@ -54,5 +52,9 @@
         column-gap: 40px;
 
         margin-top: 80px;
+
+        &__formItem {
+            margin-top: 0;
+        }
     }
 }
