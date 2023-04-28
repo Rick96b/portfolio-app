@@ -5,7 +5,7 @@
     flex-direction: column;
     justify-content: center;
 
-    margin-top: 80px;
+    margin-top: 10px;
     padding: 20px;
 
     &__name {
@@ -50,6 +50,9 @@
     .filter {
         flex-direction: row;
         align-items: center;
-        justify-content: baseline;
+        justify-content: baseline;  
+        column-gap: 40px;
+
+        margin-top: 80px;
     }
 }

@@ -1,19 +1,28 @@
 import React from 'react'
+import { Button } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 import styles from './MainHeader.module.scss';
 import Logo from 'assets/Logo.svg';
-import Person from 'assets/Person.svg';
 
-export default function MainHeader() {
+
+interface MainHeaderProps {
+  setModalVisibility: Function
+}
+
+export default function MainHeader({
+    setModalVisibility
+  }: MainHeaderProps) {
+
   return (
     <header className={styles.mainHeader}>
       <div className={styles.mainHeader__logoContainer}>
         <img src={Logo} alt='logo'/>
       </div>
-      <div className={styles.mainHeader__authContainer}>
-        <img src={Person} alt='Person' />
+      <Button className={styles.mainHeader__authButton} onClick={() => setModalVisibility(true)}>
+        <UserOutlined />
         <p>Войти</p>
-      </div>
+      </Button>
     </header>
   )
 }

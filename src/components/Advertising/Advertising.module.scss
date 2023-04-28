@@ -1,9 +1,11 @@
 @import 'styles/variables.scss';
 
 .advertising {
-    padding: 20px;
     display: flex;
     flex-direction: column;
+
+    margin-top: 20px;
+    padding: 20px;
     
     &__logoText {
         margin: 0 auto;
@@ -43,6 +45,7 @@
 
 @media (min-width: 786px) {
     .advertising {
+        margin-top: 0;
         padding-top: 80px;
         padding-bottom: 80px;
 

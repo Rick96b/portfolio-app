@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Advertising, Filter, MainFooter, MainHeader, ProjectsList } from 'components'
+import { Advertising, Filter, MainFooter, ProjectsList } from 'components'
+import { MainHeader } from 'containers';
 import styles from './Home.module.scss';
 
 export default function Home() {

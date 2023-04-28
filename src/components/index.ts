@@ -4,3 +4,7 @@ export {default as Advertising} from './Advertising';
 export {default as Filter} from './Filter';
 export {default as ProjectCard} from './ProjectCard';
 export {default as ProjectsList} from './ProjectsList';
+export {default as SignUpModal} from './SignUpModal';
+export {default as SignInModal} from './SignInModal';
+export {default as PasswordRecoveryModal} from './PasswordRecoveryModal';
+export {default as NewPasswordAcceptedModal} from './NewPasswordAcceptedModal';
