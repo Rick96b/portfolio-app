@@ -1,21 +1,28 @@
 import React from 'react'
+import { Button } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 import styles from './MainFooter.module.scss';
 import Logo from 'assets/Logo.svg';
-import Person from 'assets/Person.svg';
 
-export default function MainFooter() {
 
+interface MainFooterProps {
+    openSignUpModal: Function
+}
+
+export default function MainFooter({
+    openSignUpModal
+}: MainFooterProps) {
   return (
     <footer className={styles.mainFooter}>
         <div className={styles.mainFooter__top}>
             <div className={styles.mainFooter__logoContainer}>
                 <img src={Logo} alt='logo'/>
             </div>
-            <div className={styles.mainFooter__authContainer}>
-                <img src={Person} alt='Person' />
+            <Button className={styles.mainFooter__authButton} onClick={() => openSignUpModal(true)}>
+                <UserOutlined />
                 <p>Войти</p>
-            </div>
+            </Button>
         </div>
         <div className={styles.mainFooter__bottom}>
             <ul className={styles.mainFooter__linksList}>

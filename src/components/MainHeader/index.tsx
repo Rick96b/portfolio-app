@@ -7,19 +7,18 @@ import Logo from 'assets/Logo.svg';
 
 
 interface MainHeaderProps {
-  setModalVisibility: Function
+  openSignUpModal: Function
 }
 
 export default function MainHeader({
-    setModalVisibility
-  }: MainHeaderProps) {
-
+  openSignUpModal
+}: MainHeaderProps) {
   return (
     <header className={styles.mainHeader}>
       <div className={styles.mainHeader__logoContainer}>
         <img src={Logo} alt='logo'/>
       </div>
-      <Button className={styles.mainHeader__authButton} onClick={() => setModalVisibility(true)}>
+      <Button className={styles.mainHeader__authButton} onClick={() => openSignUpModal(true)}>
         <UserOutlined />
         <p>Войти</p>
       </Button>

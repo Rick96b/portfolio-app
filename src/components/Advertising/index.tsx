@@ -4,8 +4,13 @@ import MediaQuery from 'react-responsive';
 import styles from './Advertising.module.scss';
 import LogoText from 'assets/LogoText.svg';
 
-export default function Advertising() {
+interface AdvertisingProps {
+  openSignUpModal: Function
+}
 
+export default function Advertising({
+  openSignUpModal
+}: AdvertisingProps) {
   return (
     <section className={styles.advertising}>
         <MediaQuery minWidth={786}>
@@ -18,7 +23,7 @@ export default function Advertising() {
                 получай новые идеи и решения для своих проектов. 
                 Присоединяйся к нам и становись частью сообщества бесконечных возможностей!
             </p>
-            <button className={styles.advertising__joinButton}>Присоединяйся</button>
+            <button className={styles.advertising__joinButton} onClick={() => openSignUpModal(true)}>Присоединяйся</button>
         </div>
     </section>
   )
