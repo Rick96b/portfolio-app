@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Button } from 'antd';
+import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 import styles from './ProjectCard.module.scss';
 import Person from 'assets/Person.svg';
 import Heart from 'assets/Heart.svg';
 import Link from 'assets/Link.svg';
 import ProjectCardLogo from 'assets/projectCardLogo.png';
+import classNames from 'classnames';
 
-export default function ProjectCard() {
+
+interface ProjectCardProps 
+{
+  likeState?: boolean,
+  likes?: number,
+}
+
+export default function ProjectCard({
+  likeState, 
+  likes = 500
+}: ProjectCardProps) {
+  const [isLiked, setIsLiked] = useState(likeState);
+
   return (
     <article className={styles.projectCard}>
       <header className={styles.projectCard__header}>
@@ -14,10 +29,13 @@ export default function ProjectCard() {
           <img src={Person} className={styles.projectCard__personImg} alt='person'/>
           <span className={styles.projectCard__personName}>alexcoder007</span>
         </p>
-        <p className={styles.projectCard__likes}>
-          <img src={Heart} className={styles.projectCard__likesImg} alt='likes'/>
-          <span className={styles.projectCard__likesCount}>500</span>
-        </p>
+        <Button 
+          className={classNames(styles.projectCard__likes, isLiked ? styles.projectCard__likes_liked : '')}
+          icon={isLiked ? <HeartFilled /> : <HeartOutlined />}
+          onClick={() => setIsLiked(!isLiked)}
+        >
+          {isLiked ? likes + 1 : likes}
+        </Button>
       </header>
       <main>
         <img src={ProjectCardLogo} className={styles.projectCard__logo} alt='project logo'/>

@@ -31,17 +31,45 @@
     &__likes {
         display: flex;
         align-items: center;
-    }
 
-    &__likesImg {
-        margin-right: 5.7px;
-    }
+        padding: 2px 10px;
 
-    &__likesCount {
         font-family: $mainFontFamily;
         font-size: 14px;
         font-weight: 500;
         line-height: 17px;
+
+        border: 0;
+
+        span {
+            margin-right: 5.7px;
+        }
+
+        &:hover {
+            color: #000 !important;
+
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        &:active {
+            color: #EC008C !important;
+        }
+
+        & > div {
+            display: none;
+        }
+    }
+
+    &__likes_liked {
+        color: #EC008C !important;
+
+        &:hover {
+            color: #EC008C !important;
+        }
+
+        &:active {
+            color: #000 !important;
+        }
     }
 
     &__logo {

@@ -25,7 +25,8 @@
     &__input {
         width: 240px !important;
 
-        span {
+        span,
+        input {
             font-family: $mainFontFamily !important;
             font-weight: 500 !important;
             font-size: 15px !important;
