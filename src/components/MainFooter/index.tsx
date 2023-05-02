@@ -7,10 +7,12 @@ import Logo from 'assets/Logo.svg';
 
 
 interface MainFooterProps {
+    user: object,
     openSignUpModal: Function
 }
 
 export default function MainFooter({
+    user,
     openSignUpModal
 }: MainFooterProps) {
   return (

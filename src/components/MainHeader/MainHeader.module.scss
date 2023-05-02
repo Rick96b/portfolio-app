@@ -40,6 +40,28 @@
             display: none;
         }
     }
+
+    &__userDropdown {
+
+        ul {
+            border-radius: 0 !important;
+        } 
+
+        li {
+            font-family: $mainFontFamily;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+
+            &:nth-child(1) {
+                color: #EC008C !important;
+            }
+
+            &:nth-child(3) {
+                color: #6B6B6B !important;
+            }
+        }
+    }
 }
 
 @media (min-width: 786px) {

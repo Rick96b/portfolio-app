@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { Button } from 'antd';
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
+import { HeartOutlined, HeartFilled, UserOutlined } from '@ant-design/icons';
 
 import styles from './ProjectCard.module.scss';
-import Person from 'assets/Person.svg';
-import Heart from 'assets/Heart.svg';
 import Link from 'assets/Link.svg';
 import ProjectCardLogo from 'assets/projectCardLogo.png';
 import classNames from 'classnames';
@@ -26,7 +24,7 @@ export default function ProjectCard({
     <article className={styles.projectCard}>
       <header className={styles.projectCard__header}>
         <p className={styles.projectCard__person}>
-          <img src={Person} className={styles.projectCard__personImg} alt='person'/>
+          <UserOutlined className={styles.projectCard__personImg} alt='person'/>
           <span className={styles.projectCard__personName}>alexcoder007</span>
         </p>
         <Button 
