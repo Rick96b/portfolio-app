@@ -1,13 +1,42 @@
 import React from 'react'
-import { Button } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { Button, Dropdown } from 'antd';
+import type { MenuProps } from 'antd';
+import { UserOutlined, PlusOutlined } from '@ant-design/icons';
 
 import styles from './MainFooter.module.scss';
 import Logo from 'assets/Logo.svg';
+import Exit from 'assets/Exit.svg';
+import type { User } from 'Types';
 
+
+const dropdownItems: MenuProps['items'] = [
+    {
+      key: '1',
+      icon: <PlusOutlined />,
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
+          Разместить проект
+        </a>
+      ),
+    },
+    {
+      key: '2',
+      icon: <UserOutlined />,
+      label: (
+        <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+          Мой профиль
+        </a>
+      ),
+    },
+    {
+      key: '3',
+      icon: <img src={Exit} alt='exit'/>,
+      label: 'Выйти',
+    },
+  ];
 
 interface MainFooterProps {
-    user: object,
+    user: User,
     openSignUpModal: Function
 }
 
@@ -22,8 +51,15 @@ export default function MainFooter({
                 <img src={Logo} alt='logo'/>
             </div>
             <Button className={styles.mainFooter__authButton} onClick={() => openSignUpModal(true)}>
-                <UserOutlined />
+            <UserOutlined />
+            {
+            user ?
+                <Dropdown menu={{ items: dropdownItems }} overlayClassName={styles.mainFooter__userDropdown}>
+                    <p>{user.name}</p>
+                </Dropdown>
+            :
                 <p>Войти</p>
+            }
             </Button>
         </div>
         <div className={styles.mainFooter__bottom}>

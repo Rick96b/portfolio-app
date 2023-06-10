@@ -8,16 +8,16 @@ export default function ProjectsList() {
     <section className={styles.projectsList}>
         <ul className={styles.projectsList__list}>
           <li className={styles.projectsList__item}>
-            <ProjectCard />
+            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
           </li>
           <li className={styles.projectsList__item}>
-            <ProjectCard />
+            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
           </li>
           <li className={styles.projectsList__item}>
-            <ProjectCard />
+            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
           </li>
           <li className={styles.projectsList__item}>
-            <ProjectCard />
+            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
           </li>
         </ul>
     </section>

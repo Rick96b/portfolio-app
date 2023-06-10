@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import type { MenuProps } from 'antd';
+import React from 'react'
 
 import {MainHeader as BaseHeader} from 'components';
 import { User } from 'Types';

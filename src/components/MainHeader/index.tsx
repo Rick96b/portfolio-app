@@ -8,6 +8,7 @@ import './MainHeader.css';
 import Logo from 'assets/Logo.svg';
 import Exit from 'assets/Exit.svg';
 import type { User } from 'Types';
+import { Link } from 'react-router-dom';
 
 const dropdownItems: MenuProps['items'] = [
   {
@@ -23,9 +24,9 @@ const dropdownItems: MenuProps['items'] = [
     key: '2',
     icon: <UserOutlined />,
     label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+      <Link target="_blank" rel="noopener noreferrer" to="/profile">
         Мой профиль
-      </a>
+      </Link>
     ),
   },
   {
@@ -53,7 +54,11 @@ export default function MainHeader({
         <UserOutlined />
         {
           user ?
-          <Dropdown menu={{ items: dropdownItems }} overlayClassName={styles.mainHeader__userDropdown}>
+          <Dropdown 
+            menu={{ items: dropdownItems }}  
+            trigger={['click']} 
+            overlayClassName={styles.mainHeader__userDropdown}
+          >
             <p>{user.name}</p>
           </Dropdown>
           :

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button } from 'antd';
 import { HeartOutlined, HeartFilled, UserOutlined } from '@ant-design/icons';
+import { TechnologiesList } from 'components';
 
 import styles from './ProjectCard.module.scss';
 import Link from 'assets/Link.svg';
@@ -12,11 +13,13 @@ interface ProjectCardProps
 {
   likeState?: boolean,
   likes?: number,
+  technologies: Array<string>
 }
 
 export default function ProjectCard({
   likeState, 
-  likes = 500
+  likes = 500,
+  technologies
 }: ProjectCardProps) {
   const [isLiked, setIsLiked] = useState(likeState);
 
@@ -45,20 +48,7 @@ export default function ProjectCard({
           <p className={styles.projectCard__text}>
             CodeCraft: разработка инновационных решений с использованием передовых технологий
           </p>
-          <ul className={styles.projectCard__technologyStackList}>
-            <li className={styles.projectCard__technologyStackItem}>
-              Javascript
-            </li>
-            <li className={styles.projectCard__technologyStackItem}>
-              Haskell
-            </li>
-            <li className={styles.projectCard__technologyStackItem}>
-              Go
-            </li>
-            <li className={styles.projectCard__technologyStackItem}>
-              Python
-            </li>
-          </ul>
+          <TechnologiesList technologies={technologies}/>
         </div>
       </main>
     </article>
