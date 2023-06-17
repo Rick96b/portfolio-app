@@ -2,6 +2,7 @@ import Project from "./Project"
 
 type userData = {
     login: string,
+    email: string,
     name: string,
     vkLink: string,
     telegramLink: string,

@@ -11,42 +11,41 @@ import type { User } from 'Types';
 import { Link } from 'react-router-dom';
 import { userStore } from 'store';
 
-const dropdownItems: MenuProps['items'] = [
-  {
-    key: '1',
-    icon: <PlusOutlined />,
-    label: (
-      <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-        Разместить проект
-      </a>
-    ),
-  },
-  {
-    key: '2',
-    icon: <UserOutlined />,
-    label: (
-      <Link to="/profile">
-        Мой профиль
-      </Link>
-    ),
-  },
-  {
-    key: '3',
-    icon: <img src={Exit} alt='exit'/>,
-    label: 'Выйти',
-    onClick: () => userStore.setCurrentUser(null)
-  },
-];
-
 interface MainHeaderProps {
   user?: User,
   openSignUpModal: Function,
+  openAddProjectModal: Function
 }
 
 export default function MainHeader({
   user,
   openSignUpModal,
+  openAddProjectModal
 }: MainHeaderProps) {
+
+  const dropdownItems: MenuProps['items'] = [
+    {
+      key: '1',
+      icon: <PlusOutlined />,
+      label: "Разместить проект",
+      onClick: () => openAddProjectModal(true)
+    },
+    {
+      key: '2',
+      icon: <UserOutlined />,
+      label: (
+        <Link to="/profile">
+          Мой профиль
+        </Link>
+      ),
+    },
+    {
+      key: '3',
+      icon: <img src={Exit} alt='exit'/>,
+      label: 'Выйти',
+      onClick: () => userStore.setCurrentUser(null)
+    },
+  ];
   return (
     <header className={styles.mainHeader}>
       <Link to="/" className={styles.mainHeader__logoContainer}>

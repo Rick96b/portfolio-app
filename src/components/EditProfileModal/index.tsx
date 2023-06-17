@@ -6,15 +6,17 @@ import styles from "./EditProfileModal.module.scss";
 import TelegramIcon from 'assets/Telegram.svg';
 import VkIcon from 'assets/Vk.svg';
 import TextArea from 'antd/es/input/TextArea';
+import { userData } from 'Types';
 
 interface EditProfileModalProps {
     isOpen: boolean,
     setIsOpen: Function,
     submitFunction: Function,
-    setPasswordModalOpen: Function
+    setPasswordModalOpen: Function,
+    userData: userData
 }
 
-const EditProfileModel: React.FC<EditProfileModalProps> = ({isOpen, setIsOpen, submitFunction, setPasswordModalOpen}) => {
+const EditProfileModel: React.FC<EditProfileModalProps> = ({isOpen, userData, setIsOpen, submitFunction, setPasswordModalOpen}) => {
   return (
     <Modal 
         open={isOpen}
@@ -23,11 +25,22 @@ const EditProfileModel: React.FC<EditProfileModalProps> = ({isOpen, setIsOpen, s
         title='Ваш профиль'
         className={styles.modal}
     >
-        <Form className={styles.modal__form} onFinish={(values: any) => submitFunction(values)}>
+        <Form 
+          className={styles.modal__form} 
+          onFinish={(values: any) => submitFunction(values)}
+          initialValues={{
+            "name": userData.name,
+            "email": userData.email,
+            "description": userData.description,
+            "vkLink": userData.vkLink,
+            "telegramLink": userData.telegramLink,
+            "photo": userData.photo
+          }}
+        >
             <b className={styles.modal__profileHeader}>Профиль</b>
             <Form.Item 
               className={styles.modal__formItem} 
-              name="login"
+              name="name"
             >
               <Input 
                 prefix={<UserOutlined />}

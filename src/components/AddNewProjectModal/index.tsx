@@ -1,90 +1,93 @@
 import React from 'react'
-import { Button, Form, Input, Modal } from 'antd';
-import { UserOutlined, MailOutlined, LockOutlined, AlignCenterOutlined  } from '@ant-design/icons';
+import { Button, Form, Input, Modal, Select, SelectProps } from 'antd';
+import { CameraFilled } from '@ant-design/icons';
 
 import styles from "./AddNewProjectModal.module.scss";
+import LinkIcon from "assets/Link.svg";
+import TextIcon from "assets/Text.svg";
 import TelegramIcon from 'assets/Telegram.svg';
 import VkIcon from 'assets/Vk.svg';
 import TextArea from 'antd/es/input/TextArea';
 
 interface AddNewProjectModalProps {
     isOpen: boolean,
-    setIsOpen: Function
+    setIsOpen: Function,
+    submitFunction: Function
 }
 
-const AddNewProjectModal: React.FC<AddNewProjectModalProps> = ({isOpen, setIsOpen}) => {
+const stackOptions: SelectProps['options'] = [
+  {
+    label: 'Javascript',
+    value: 'Javascript'
+  }];
+
+
+const AddNewProjectModal: React.FC<AddNewProjectModalProps> = ({isOpen, setIsOpen, submitFunction}) => {
   return (
     <Modal 
         open={isOpen}
         onCancel={() => setIsOpen(false)}
         footer={null}
-        title='Ваш профиль'
+        title='Новый пост'
         className={styles.modal}
     >
-        <Form className={styles.modal__form}>
-            <b className={styles.modal__profileHeader}>Профиль</b>
-            <Form.Item className={styles.modal__formItem}>
+        <Form className={styles.modal__form} onFinish={(values: any) => submitFunction(values)}>
+            <b className={styles.modal__profileHeader}>О проекте</b>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="name"
+            >
               <Input 
-                prefix={<UserOutlined />}
-                placeholder='Логин'
+                prefix={<img src={TextIcon} style={{opacity: "0.7"}}/>}
+                placeholder='Название проекта'
                 className={styles.modal__input}
               />
             </Form.Item>
             <Form.Item
                 style={{marginBottom: '0'}}
                 className={styles.modal__formItem}
+                name="githubLink"
             >
                 <Input 
-                    prefix={<MailOutlined />}
-                    type='email'
-                    placeholder='Email'
+                    prefix={<img src={LinkIcon} />}
+                    placeholder='Ссылка на проект'
                     className={styles.modal__input}
                 />
             </Form.Item>
-            <Button className={styles.modal__resetPasswordButton} 
-              onClick={() => {
-                setIsOpen(false)
-              }}>
-                <LockOutlined /> Изменить пароль?
-            </Button>    
-            <b className={styles.modal__ArticleInfoHeader}>Дополнительная информация</b>
+            <b className={styles.modal__ArticleInfoHeader}>Стеки</b>
             <Form.Item
                 style={{marginBottom: '20px'}}
                 className={styles.modal__formItem}
+                name="technologies"
             >
-                <TextArea rows={4}
-                    style={{resize: "none"}}
-                    placeholder='Дополнительная информация'
-                    className={styles.modal__input}
-                />
+              <Select 
+                mode="multiple"
+                options={stackOptions}
+                defaultValue={stackOptions[0]}
+                className={styles.modal__input}
+              />
             </Form.Item>
+            <b className={styles.modal__ArticleInfoHeader}>Обложка проекта</b>
             <Form.Item
-                style={{marginBottom: '20px'}}
+                style={{marginBottom: '8px'}}
                 className={styles.modal__formItem}
+                name="photo"
             >
                 <Input 
-                    prefix={<img src={TelegramIcon} />}
-                    placeholder='Ссылка на телеграм'
-                    className={styles.modal__input}
-                />
-            </Form.Item>
-            <Form.Item
-                style={{marginBottom: '20px'}}
-                className={styles.modal__formItem}
-            >
-                <Input 
-                    prefix={<img src={VkIcon} />}
+                    prefix={<CameraFilled style={{opacity: "0.7"}}/>}
 
-                    placeholder='Ссылка на Vk'
+                    placeholder='Загрузить изображение'
                     className={styles.modal__input}
                 />
             </Form.Item>
+            <span className={styles.modal__underLabel}>Минимальный размер 450x450 px</span>
             <Form.Item
-              style={{marginBottom: '0'}}
+              style={{marginBottom: '0', marginTop: "20px"}}
               className={styles.modal__formItem}
             >
               <Button
                 className={styles.modal__submitButton}
+                htmlType='submit'
               >
                 Сохранить
               </Button>

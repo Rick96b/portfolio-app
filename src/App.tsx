@@ -4,11 +4,9 @@ import { Routes, Route } from 'react-router-dom';
 import styles from './App.module.scss';
 import { Home, Profile } from 'pages';
 import { MainFooter, MainHeader, NewPasswordAcceptedModal } from 'components';
-import { SignInModal, SignUpModal, PasswordRecoveryModal } from 'containers';
+import { SignInModal, SignUpModal, PasswordRecoveryModal, AddNewProjectModal } from 'containers';
 import { observer } from 'mobx-react-lite';
 import { userStore } from 'store';
-import axios from 'axios';
-import AddNewProjectModal from 'components/AddNewProjectModal';
 
 function App() {
   const [isSignUpModalVisible, setSignUpModalVisibility] = useState(false)
@@ -20,14 +18,14 @@ function App() {
   return (
   <div className={styles.app}>
     <div className={styles.container}>
-      <MainHeader openSignUpModal={setSignInModalVisibility} user={userStore.currentUser}/>
+      <MainHeader openSignUpModal={setSignInModalVisibility} user={userStore.currentUser} openAddProjectModal={setAddProjectModalVisibility}/>
       <div className={styles.content}></div>
       <Routes>
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<Home setSignUpModalVisibility={setSignInModalVisibility} 
         setAddProjectModalVisibility={setAddProjectModalVisibility}/>} />
       </Routes>
-      <MainFooter openSignUpModal={setSignInModalVisibility} user={userStore.currentUser}/>
+      <MainFooter openSignUpModal={setSignInModalVisibility} user={userStore.currentUser} openAddProjectModal={setAddProjectModalVisibility}/>
     </div>
 
     {/*  MODALS */}

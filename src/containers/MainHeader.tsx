@@ -5,12 +5,14 @@ import { User } from 'Types';
 
 interface MainHeaderProps {
     user: User,
+    openAddProjectModal: Function,
     openSignUpModal: Function
 }
 
 
 export default function MainHeader({
     openSignUpModal,
+    openAddProjectModal,
     user
 }: MainHeaderProps) {
 
@@ -18,6 +20,7 @@ export default function MainHeader({
     return (
         <BaseHeader 
             openSignUpModal={openSignUpModal}
+            openAddProjectModal={openAddProjectModal}
             user={user}
         />
     )

@@ -7,11 +7,13 @@ import styles from './PasswordChangeModal.module.scss';
 interface PasswordChangeModal {
   isOpen: boolean,
   setIsOpen: Function,
+  submitFunction: Function
 }
 
 const PasswordChangeModal:React.FC<PasswordChangeModal> = ({
   isOpen,
   setIsOpen,
+  submitFunction
 }) => {
 
   return (
@@ -19,13 +21,24 @@ const PasswordChangeModal:React.FC<PasswordChangeModal> = ({
         open={isOpen}
         onCancel={() => setIsOpen(false)}
         footer={null}
-        title='Восстановление пароля'
+        title='Смена пароля'
         className={styles.modal}
     >
-        <Form className={styles.modal__form}>
+        <Form className={styles.modal__form} onFinish={(values: any) => submitFunction(values)}>
             <Form.Item 
               className={styles.modal__formItem}
-              name="password"
+              name="login"
+            >
+              <Input 
+                prefix={<UserOutlined />}
+                type='password'
+                placeholder='Логин'
+                className={styles.modal__input}
+              />
+            </Form.Item>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="oldPassword"
             >
               <Input 
                 prefix={<LockOutlined />}
@@ -36,7 +49,7 @@ const PasswordChangeModal:React.FC<PasswordChangeModal> = ({
             </Form.Item>
             <Form.Item 
               className={styles.modal__formItem}
-              name="password"
+              name="newPassword"
             >
               <Input 
                 prefix={<LockOutlined />}
@@ -47,12 +60,12 @@ const PasswordChangeModal:React.FC<PasswordChangeModal> = ({
             </Form.Item>
             <Form.Item 
               className={styles.modal__formItem}
-              name="passwordConfirm"
+              name="confirmNewPassword"
             >
               <Input 
               prefix={<LockOutlined />}
                 type='password'
-                placeholder='Повторите пароль'
+                placeholder='Повторите новый пароль'
                 className={styles.modal__input}
               />
             </Form.Item>

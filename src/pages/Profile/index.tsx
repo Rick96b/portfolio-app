@@ -5,27 +5,24 @@ import axios from 'axios';
 import { userData } from 'Types';
 import { userStore } from 'store';
 import { Loader } from 'components';
+import { observer } from 'mobx-react';
 
 
 const Profile = () => {
-  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
       const data = await axios.get<userData>("http://localhost:5000/api/users/id/" + userStore.currentUser.id)
       .catch(error => console.log(error))
-      if(data) setUserData(data.data);
+      if(data) userStore.setUserData(data.data);
     };
     getData();
   }, []);
-
-  console.log(userData)
-
-  if(userData===null) return <Loader />
+  if(userStore.userData===null) return <Loader />
 
   return (
-    <BasePage userData={userData}/>
+    <BasePage userData={userStore.userData}/>
   )
 }
 
-export default Profile;
+export default observer(Profile);

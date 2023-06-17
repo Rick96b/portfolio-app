@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import styles from './Profile.module.scss';
-import { PasswordChangeModal, ProfileCard, ProjectsList } from 'components';
-import { EditProfileModal } from 'containers';
+import { ProfileCard, ProjectsList } from 'components';
+import { EditProfileModal, PasswordChangeModal } from 'containers';
 import { userData } from 'Types';
 
 interface ProfileProps {
@@ -29,7 +29,12 @@ const Profile:React.FC<ProfileProps> = ({userData}) => {
         "photo": "123",
         "id": 1
       }]}/>
-      <EditProfileModal isOpen={isEditModalOpen} setIsOpen={setEditModalOpen} setPasswordModalOpen={setPasswordModalOpen}/>
+      <EditProfileModal 
+        isOpen={isEditModalOpen} 
+        setIsOpen={setEditModalOpen} 
+        userData={userData} 
+        setPasswordModalOpen={setPasswordModalOpen}
+      />
       <PasswordChangeModal isOpen={isPasswordModalOpen} setIsOpen={setPasswordModalOpen} />
     </div>
   )

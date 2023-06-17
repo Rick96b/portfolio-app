@@ -1,17 +1,21 @@
 import {makeAutoObservable} from 'mobx';
 
-import { User } from 'Types';
+import { User, userData } from 'Types';
 
 class UserStore {
     currentUser: User = null;
+    userData: userData = null;
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    setCurrentUser = (user: User) => {
-        console.log(user)
+    setCurrentUser(user: User) {
         this.currentUser = user;
+    }
+
+    setUserData(userData: userData) {
+        this.userData = userData
     }
 }
 

@@ -8,6 +8,7 @@ import Logo from 'assets/Logo.svg';
 import Exit from 'assets/Exit.svg';
 import type { User } from 'Types';
 import { Link } from 'react-router-dom';
+import { userStore } from 'store';
 
 
 const dropdownItems: MenuProps['items'] = [
@@ -38,13 +39,38 @@ const dropdownItems: MenuProps['items'] = [
 
 interface MainFooterProps {
     user?: User,
-    openSignUpModal: Function
+    openSignUpModal: Function,
+    openAddProjectModal: Function
 }
 
 export default function MainFooter({
     user,
-    openSignUpModal
+    openSignUpModal,
+    openAddProjectModal
 }: MainFooterProps) {
+  const dropdownItems: MenuProps['items'] = [
+    {
+      key: '1',
+      icon: <PlusOutlined />,
+      label: "Разместить проект",
+      onClick: () => openAddProjectModal(true)
+    },
+    {
+      key: '2',
+      icon: <UserOutlined />,
+      label: (
+        <Link to="/profile">
+          Мой профиль
+        </Link>
+      ),
+    },
+    {
+      key: '3',
+      icon: <img src={Exit} alt='exit'/>,
+      label: 'Выйти',
+      onClick: () => userStore.setCurrentUser(null)
+    },
+  ];
   return (
     <footer className={styles.mainFooter}>
         <div className={styles.mainFooter__top}>

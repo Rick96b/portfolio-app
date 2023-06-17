@@ -15,7 +15,7 @@ const ProfileCard: React.FC<Props> = ({ setModalOpen, userData}) => {
   return (
     <article className={styles.profileCard}>
         <header className={styles.header}>
-            <span>{userData.login}</span>
+            <span>{userData.name}</span>
             <EditOutlined style={{color: "#6B6B6B", fontSize: '13px'}} onClick={() => setModalOpen(true)}/>
         </header>
         <main className={styles.main}>
