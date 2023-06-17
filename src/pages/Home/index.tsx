@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import {default as BasePage} from './Home';
 import axios from 'axios';
+import { Loader } from 'components';
 
 
 interface HomeProps {
@@ -14,13 +15,12 @@ export default function Home({
   setAddProjectModalVisibility
 }: HomeProps) {
   const [projects, setProjects] = useState(null)
-  const [initialized, setInitialized] = useState(false);
 
-  async function getProjects(count: number) {
+  async function getProjects(count: number)  {
     try {
       // 👇️ const data: GetUsersResponse
       const { data, status } = await axios.get(
-        'http://localhost:5000/api/Project/feed',
+        'http://localhost:5000/api/Projects/feed',
         {
           params: {
             count: count
@@ -28,6 +28,7 @@ export default function Home({
         },
       );
 
+      if(!projects) setProjects(data.projects);
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -40,11 +41,11 @@ export default function Home({
     }
   } 
 
-  if(!initialized) {
-    getProjects(10).then(data => setProjects(data));
-    setInitialized(true);
-  }
+  useEffect(() => {
+    getProjects(12)
+  })
 
+  if(!projects) return <Loader />
 
   return (
     <>

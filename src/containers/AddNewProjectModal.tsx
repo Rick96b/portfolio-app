@@ -25,7 +25,7 @@ const AddNewProjectModal:React.FC<AddNewProjectModalProps> = ({isOpen, setIsOpen
               })
               : []
           }
-          console.log(refactoredValues)
+
           await axios.post(
             'http://localhost:5000/api/Projects/add',
             {
