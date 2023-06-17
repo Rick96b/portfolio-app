@@ -1,9 +1,10 @@
 import React from 'react'
 
 import styles from './TechnologiesList.module.scss';
+import { Technology } from 'Types';
 
 interface Props {
-    technologies: Array<string>
+    technologies: Array<Technology>
 }
 
 const TechnologiesList: React.FC<Props> = ({ technologies }) => {
@@ -11,7 +12,7 @@ const TechnologiesList: React.FC<Props> = ({ technologies }) => {
     <ul className={styles.technologyStackList}>
       {technologies.map(technology => 
           <li className={styles.technologyStackItem}>
-              {technology}
+              {technology.name}
           </li>
       )}
     </ul>

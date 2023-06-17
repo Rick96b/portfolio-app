@@ -9,6 +9,7 @@ import Logo from 'assets/Logo.svg';
 import Exit from 'assets/Exit.svg';
 import type { User } from 'Types';
 import { Link } from 'react-router-dom';
+import { userStore } from 'store';
 
 const dropdownItems: MenuProps['items'] = [
   {
@@ -24,7 +25,7 @@ const dropdownItems: MenuProps['items'] = [
     key: '2',
     icon: <UserOutlined />,
     label: (
-      <Link target="_blank" rel="noopener noreferrer" to="/profile">
+      <Link to="/profile">
         Мой профиль
       </Link>
     ),
@@ -33,6 +34,7 @@ const dropdownItems: MenuProps['items'] = [
     key: '3',
     icon: <img src={Exit} alt='exit'/>,
     label: 'Выйти',
+    onClick: () => userStore.setCurrentUser(null)
   },
 ];
 
@@ -47,9 +49,9 @@ export default function MainHeader({
 }: MainHeaderProps) {
   return (
     <header className={styles.mainHeader}>
-      <div className={styles.mainHeader__logoContainer}>
+      <Link to="/" className={styles.mainHeader__logoContainer}>
         <img src={Logo} alt='logo'/>
-      </div>
+      </Link>
       <Button className={styles.mainHeader__authButton} onClick={user ? () => {} : () => openSignUpModal(true)}>
         <UserOutlined />
         {
@@ -59,7 +61,7 @@ export default function MainHeader({
             trigger={['click']} 
             overlayClassName={styles.mainHeader__userDropdown}
           >
-            <p>{user.name}</p>
+            <p>{user.login}</p>
           </Dropdown>
           :
           <p>Войти</p>

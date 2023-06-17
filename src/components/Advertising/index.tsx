@@ -3,13 +3,16 @@ import MediaQuery from 'react-responsive';
 
 import styles from './Advertising.module.scss';
 import LogoText from 'assets/LogoText.svg';
+import { userStore } from 'store';
 
 interface AdvertisingProps {
-  openSignUpModal: Function
+  openSignUpModal: Function,
+  setAddProjectModalVisibility: Function
 }
 
 export default function Advertising({
-  openSignUpModal
+  openSignUpModal,
+  setAddProjectModalVisibility
 }: AdvertisingProps) {
   return (
     <section className={styles.advertising}>
@@ -23,7 +26,16 @@ export default function Advertising({
                 получай новые идеи и решения для своих проектов. 
                 Присоединяйся к нам и становись частью сообщества бесконечных возможностей!
             </p>
-            <button className={styles.advertising__joinButton} onClick={() => openSignUpModal(true)}>Присоединяйся</button>
+            <button 
+              className={styles.advertising__joinButton} 
+              onClick={() => {
+                userStore.currentUser ? 
+                openSignUpModal(true) :
+                setAddProjectModalVisibility(true)
+              }}
+            >
+              Присоединяйся
+            </button>
         </div>
     </section>
   )

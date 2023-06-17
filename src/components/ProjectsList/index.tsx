@@ -2,24 +2,24 @@ import React from 'react'
 
 import styles from './ProjectsList.module.scss';
 import { ProjectCard } from 'components';
+import { Project } from 'Types';
 
-export default function ProjectsList() {
+interface ProjectListProps {
+  projects: Array<Project>
+}
+
+const ProjectsList: React.FC<ProjectListProps> = ({projects}) => {
   return (
     <section className={styles.projectsList}>
         <ul className={styles.projectsList__list}>
-          <li className={styles.projectsList__item}>
-            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
-          </li>
-          <li className={styles.projectsList__item}>
-            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
-          </li>
-          <li className={styles.projectsList__item}>
-            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
-          </li>
-          <li className={styles.projectsList__item}>
-            <ProjectCard technologies={['Javascript', 'Python', 'Haskell', 'Go']}/>
-          </li>
+          {projects != null && projects.map(project => 
+             <li className={styles.projectsList__item}>
+                <ProjectCard {...project}/>
+              </li>
+          )}
         </ul>
     </section>
   )
 }
+
+export default ProjectsList;

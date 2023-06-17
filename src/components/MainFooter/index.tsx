@@ -7,6 +7,7 @@ import styles from './MainFooter.module.scss';
 import Logo from 'assets/Logo.svg';
 import Exit from 'assets/Exit.svg';
 import type { User } from 'Types';
+import { Link } from 'react-router-dom';
 
 
 const dropdownItems: MenuProps['items'] = [
@@ -23,9 +24,9 @@ const dropdownItems: MenuProps['items'] = [
       key: '2',
       icon: <UserOutlined />,
       label: (
-        <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
+        <Link to="/profile">
           Мой профиль
-        </a>
+        </Link>
       ),
     },
     {
@@ -36,7 +37,7 @@ const dropdownItems: MenuProps['items'] = [
   ];
 
 interface MainFooterProps {
-    user: User,
+    user?: User,
     openSignUpModal: Function
 }
 
@@ -47,19 +48,19 @@ export default function MainFooter({
   return (
     <footer className={styles.mainFooter}>
         <div className={styles.mainFooter__top}>
-            <div className={styles.mainFooter__logoContainer}>
+            <Link className={styles.mainFooter__logoContainer} to="/">
                 <img src={Logo} alt='logo'/>
-            </div>
-            <Button className={styles.mainFooter__authButton} onClick={() => openSignUpModal(true)}>
-            <UserOutlined />
-            {
-            user ?
-                <Dropdown menu={{ items: dropdownItems }} overlayClassName={styles.mainFooter__userDropdown}>
-                    <p>{user.name}</p>
-                </Dropdown>
-            :
-                <p>Войти</p>
-            }
+            </Link>
+            <Button className={styles.mainFooter__authButton} onClick={user ? () => {} : () => openSignUpModal(true)}>
+              <UserOutlined />
+              {
+              user ?
+                  <Dropdown menu={{ items: dropdownItems }} overlayClassName={styles.mainFooter__userDropdown}>
+                      <p>{user.login}</p>
+                  </Dropdown>
+              :
+                  <p>Войти</p>
+              }
             </Button>
         </div>
         <div className={styles.mainFooter__bottom}>

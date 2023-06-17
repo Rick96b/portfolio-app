@@ -10,13 +10,15 @@ interface PasswordRecoveryModalProps {
   setIsOpen: Function,
   openSignIn: Function,
   openNewPasswordAccepted: Function
+  submitFunction: Function
 }
 
 export default function PasswordRecoveryModal({
   isOpen,
   setIsOpen,
   openSignIn,
-  openNewPasswordAccepted
+  openNewPasswordAccepted,
+  submitFunction
 }: PasswordRecoveryModalProps) {
 
   return (
@@ -27,25 +29,32 @@ export default function PasswordRecoveryModal({
         title='Восстановление пароля'
         className={styles.modal}
     >
-        <Form className={styles.modal__form}>
-            <Form.Item className={styles.modal__formItem}>
+        <Form className={styles.modal__form} onFinish={(values: any) => submitFunction(values)}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="login"
+            >
               <Input 
                 prefix={<UserOutlined />}
                 placeholder='Логин'
                 className={styles.modal__input}
               />
             </Form.Item>
-            <Form.Item className={styles.modal__formItem}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name='email'
+            >
                 <Input 
                     prefix={<LockOutlined />}
-                    type='password'
-                    placeholder='Пароль'
+                    type='email'
+                    placeholder='Email'
                     className={styles.modal__input}
                 />
             </Form.Item>
             <Form.Item style={{marginBottom: '0'}}>
               <Button
                 className={styles.modal__submitButton}
+                htmlType='submit'
                 onClick={() => {
                   setIsOpen(false);
                   openNewPasswordAccepted(true)

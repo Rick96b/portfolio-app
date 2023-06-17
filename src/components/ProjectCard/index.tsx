@@ -7,20 +7,33 @@ import styles from './ProjectCard.module.scss';
 import Link from 'assets/Link.svg';
 import ProjectCardLogo from 'assets/projectCardLogo.png';
 import classNames from 'classnames';
+import { Technology } from 'Types';
 
 
 interface ProjectCardProps 
 {
   likeState?: boolean,
-  likes?: number,
-  technologies: Array<string>
+  authorID: string,
+  name: string,
+  description: string,
+  technologies: Array<Technology>,
+  githubLink: string,
+  likes: number,
+  photo: string,
+  id: number
 }
 
-export default function ProjectCard({
-  likeState, 
-  likes = 500,
-  technologies
-}: ProjectCardProps) {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  likeState,
+  authorID,
+  name,
+  description,
+  technologies,
+  githubLink,
+  likes,
+  photo,
+  id
+}) => {
   const [isLiked, setIsLiked] = useState(likeState);
 
   return (
@@ -54,3 +67,5 @@ export default function ProjectCard({
     </article>
   )
 }
+
+export default ProjectCard;

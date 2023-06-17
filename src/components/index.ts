@@ -10,3 +10,6 @@ export {default as SignUpModal} from './SignUpModal';
 export {default as SignInModal} from './SignInModal';
 export {default as PasswordRecoveryModal} from './PasswordRecoveryModal';
 export {default as NewPasswordAcceptedModal} from './NewPasswordAcceptedModal';
+export {default as PasswordChangeModal} from './PasswordChangeModal';
+export {default as EditProfileModal} from './EditProfileModal';
+export {default as Loader} from './Loader';

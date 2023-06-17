@@ -9,12 +9,14 @@ interface SignUpModalProps {
   isOpen: boolean,
   setIsOpen: Function
   openSignIn: Function
+  submitFunction: Function
 }
 
 export default function SignUpModal({
   isOpen,
   setIsOpen,
-  openSignIn
+  openSignIn,
+  submitFunction
 }: SignUpModalProps) {
 
   return (
@@ -25,22 +27,31 @@ export default function SignUpModal({
         title='Регистрация'
         className={styles.modal}
     >
-        <Form className={styles.modal__form}>
-            <Form.Item className={styles.modal__formItem}>
+        <Form className={styles.modal__form} onFinish={(values: any) => submitFunction(values)}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="login"
+            >
               <Input 
                 prefix={<UserOutlined />}
                 placeholder='Логин'
                 className={styles.modal__input}
               />
             </Form.Item>
-            <Form.Item className={styles.modal__formItem}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="email"
+            >
               <Input 
                 prefix={<MailOutlined />}
                 placeholder='E-Mail'
                 className={styles.modal__input}
               />
             </Form.Item>
-            <Form.Item className={styles.modal__formItem}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="password"
+            >
               <Input 
                 prefix={<LockOutlined />}
                 type='password'
@@ -48,7 +59,10 @@ export default function SignUpModal({
                 className={styles.modal__input}
               />
             </Form.Item>
-            <Form.Item className={styles.modal__formItem}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="passwordConfirm"
+            >
               <Input 
               prefix={<LockOutlined />}
                 type='password'
@@ -62,6 +76,7 @@ export default function SignUpModal({
             >
               <Button
                 className={styles.modal__submitButton}
+                htmlType='submit'
               >
                 Зарегистрироваться
               </Button>

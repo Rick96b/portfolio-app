@@ -2,36 +2,32 @@ import React from 'react'
 import { EditOutlined } from '@ant-design/icons';
 
 import styles from './ProfileCard.module.scss';
-import TechnologiesList from 'components/TechnologiesList';
 import TelegramIcon from 'assets/Telegram.svg';
 import VkIcon from 'assets/Vk.svg';
+import { userData } from 'Types';
 
 interface Props {
-  userName: string
-  technologies: Array<string>
-  vkLink?: string | undefined
-  telegramLink?: string | undefined
+  userData: userData | undefined
+  setModalOpen: Function
 }
 
-const ProfileCard: React.FC<Props> = ({ userName, technologies, vkLink = '', telegramLink = ''}) => {
+const ProfileCard: React.FC<Props> = ({ setModalOpen, userData}) => {
   return (
     <article className={styles.profileCard}>
         <header className={styles.header}>
-            <span>{userName}</span>
-            <EditOutlined style={{color: "#6B6B6B", fontSize: '13px'}}/>
+            <span>{userData.login}</span>
+            <EditOutlined style={{color: "#6B6B6B", fontSize: '13px'}} onClick={() => setModalOpen(true)}/>
         </header>
         <main className={styles.main}>
           <p className={styles.description}>
-            Я являюсь опытным программистом, 
-            обладающим широким спектром навыков и знаний в различных языках программирования.
+           {userData.description}
           </p>
-          <TechnologiesList technologies={technologies} />
         </main>
         <footer className={styles.footer}>
-          <a href={telegramLink} className={styles.telegramLink}>
+          <a href={userData.telegramLink} className={styles.telegramLink}>
             <img src={TelegramIcon} />
           </a>
-          <a href={telegramLink} className={styles.vkLink}>
+          <a href={userData.vkLink} className={styles.vkLink}>
             <img src={VkIcon} />
           </a>
         </footer>

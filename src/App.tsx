@@ -2,34 +2,33 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import styles from './App.module.scss';
-import { Home } from 'pages';
-import { MainFooter, MainHeader, SignInModal, SignUpModal, PasswordRecoveryModal, NewPasswordAcceptedModal } from 'components';
-import { User } from 'Types';
-import Profile from 'pages/Profile';
+import { Home, Profile } from 'pages';
+import { MainFooter, MainHeader, NewPasswordAcceptedModal } from 'components';
+import { SignInModal, SignUpModal, PasswordRecoveryModal } from 'containers';
+import { observer } from 'mobx-react-lite';
+import { userStore } from 'store';
+import axios from 'axios';
+import AddNewProjectModal from 'components/AddNewProjectModal';
 
 function App() {
   const [isSignUpModalVisible, setSignUpModalVisibility] = useState(false)
   const [isSignInModalVisible, setSignInModalVisibility] = useState(false)
   const [isPasswordRecoveryModalVisible, setPasswordRecoveryModalVisibility] = useState(false)
   const [isNewPasswordAcceptedModalVisible, setNewPasswordAcceptedModalVisibility] = useState(false);
-
-  const user: User = 
-  {
-    name: 'Chel'
-  }
-
+  const [isAddProjectModalVisible, setAddProjectModalVisibility] = useState(false);
 
   return (
   <div className={styles.app}>
     <div className={styles.container}>
-      <MainHeader openSignUpModal={setSignUpModalVisibility} user={user}/>
+      <MainHeader openSignUpModal={setSignInModalVisibility} user={userStore.currentUser}/>
+      <div className={styles.content}></div>
       <Routes>
         <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<Home setSignUpModalVisibility={setSignUpModalVisibility}/>} />
+        <Route path="*" element={<Home setSignUpModalVisibility={setSignInModalVisibility} 
+        setAddProjectModalVisibility={setAddProjectModalVisibility}/>} />
       </Routes>
-      <MainFooter openSignUpModal={setSignUpModalVisibility} user={user}/>
+      <MainFooter openSignUpModal={setSignInModalVisibility} user={userStore.currentUser}/>
     </div>
-
 
     {/*  MODALS */}
     <SignUpModal 
@@ -54,8 +53,12 @@ function App() {
       setIsOpen={setNewPasswordAcceptedModalVisibility}
       openSignIn={setSignInModalVisibility}
     />
+    <AddNewProjectModal
+      isOpen={isAddProjectModalVisible}
+      setIsOpen={setAddProjectModalVisibility}
+    />
   </div>
   );
 }
 
-export default App;
+export default observer(App);

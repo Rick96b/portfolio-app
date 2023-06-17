@@ -9,14 +9,16 @@ interface SignInModalProps {
   isOpen: boolean,
   setIsOpen: Function,
   openSignUp: Function,
-  openPasswordRecovery: Function
+  openPasswordRecovery: Function,
+  submitFunction: Function
 }
 
 export default function SignInModal({
   isOpen,
   setIsOpen,
   openSignUp,
-  openPasswordRecovery
+  openPasswordRecovery,
+  submitFunction
 }: SignInModalProps) {
 
   return (
@@ -27,8 +29,11 @@ export default function SignInModal({
         title='Авторизация'
         className={styles.modal}
     >
-        <Form className={styles.modal__form}>
-            <Form.Item className={styles.modal__formItem}>
+        <Form className={styles.modal__form} onFinish={(values: any) => submitFunction(values)}>
+            <Form.Item 
+              className={styles.modal__formItem}
+              name="login"
+            >
               <Input 
                 prefix={<UserOutlined />}
                 placeholder='Логин'
@@ -38,6 +43,7 @@ export default function SignInModal({
             <Form.Item
                 style={{marginBottom: '0'}}
                 className={styles.modal__formItem}
+                name="password"
             >
                 <Input 
                     prefix={<LockOutlined />}
@@ -59,6 +65,7 @@ export default function SignInModal({
             >
               <Button
                 className={styles.modal__submitButton}
+                htmlType='submit'
               >
                 Войти
               </Button>

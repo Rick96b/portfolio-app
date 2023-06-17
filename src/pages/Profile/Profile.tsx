@@ -1,18 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styles from './Profile.module.scss';
-import { ProfileCard, ProjectsList } from 'components';
+import { PasswordChangeModal, ProfileCard, ProjectsList } from 'components';
+import { EditProfileModal } from 'containers';
+import { userData } from 'Types';
 
-const Profile = () => {
+interface ProfileProps {
+  userData: userData
+}
+
+const Profile:React.FC<ProfileProps> = ({userData}) => {
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isPasswordModalOpen, setPasswordModalOpen] = useState(false);
+
   return (
     <div className={styles.profile}>
       <ProfileCard 
-        userName='Chel' 
-        technologies={['Javascript', 'Python', 'Haskell', "Go"]} 
-        vkLink=''
-        telegramLink=''
+        userData={userData}
+        setModalOpen={setEditModalOpen}
       />
-      <ProjectsList />
+      <ProjectsList projects={[{
+        "authorID": "0",
+        "name": "Lol",
+        "description": "Fuck you",
+        "technologies": [{id:"0", name: "Javascript"}],
+        "githubLink": "github.com",
+        "likes": 234,
+        "photo": "123",
+        "id": 1
+      }]}/>
+      <EditProfileModal isOpen={isEditModalOpen} setIsOpen={setEditModalOpen} setPasswordModalOpen={setPasswordModalOpen}/>
+      <PasswordChangeModal isOpen={isPasswordModalOpen} setIsOpen={setPasswordModalOpen} />
     </div>
   )
 }
