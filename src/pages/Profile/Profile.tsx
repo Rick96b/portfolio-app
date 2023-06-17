@@ -22,7 +22,7 @@ const Profile:React.FC<ProfileProps> = ({userData}) => {
       <ProjectsList projects={[{
         "authorID": "0",
         "name": "Lol",
-        "description": "Fuck you",
+        "description": "Hehe",
         "technologies": [{id:"0", name: "Javascript"}],
         "githubLink": "github.com",
         "likes": 234,
