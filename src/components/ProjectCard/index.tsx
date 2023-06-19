@@ -104,7 +104,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className={styles.projectCard__infoContainer}>
           <p className={styles.projectCard__link}>
             <img src={LinkIcon} className={styles.projectCard__linkImg} alt='project link'/>
-            <a href='https://' className={styles.projectCard__linkText}>{githubLink}</a>
+            <a href={githubLink} className={styles.projectCard__linkText}>{githubLink}</a>
           </p>
           <p className={styles.projectCard__text}>
             {name}

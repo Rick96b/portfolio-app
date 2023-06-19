@@ -103,7 +103,6 @@ const AddNewProjectModal: React.FC<AddNewProjectModalProps> = ({isOpen, setIsOpe
               <Select 
                 mode="multiple"
                 options={stackOptions}
-                defaultValue={stackOptions[0]}
                 className={styles.modal__input}
               />
             </Form.Item>

@@ -31,6 +31,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   authorLogin,
   authorName
 }) => {
+    console.log(isLiked)
     async function likeProject()  {
       try {
         const { data, status } = await axios.post(

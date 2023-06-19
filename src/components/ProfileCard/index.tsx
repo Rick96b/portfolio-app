@@ -8,7 +8,7 @@ import { userData } from 'Types';
 import { userStore } from 'store';
 
 interface Props {
-  userData: userData | undefined
+  userData: userData
   setModalOpen: Function
 }
 
@@ -16,8 +16,9 @@ const ProfileCard: React.FC<Props> = ({ setModalOpen, userData}) => {
   return (
     <article className={styles.profileCard}>
         <header className={styles.header}>
-            <span>{userData.name}</span>
+            <span>{userData.name ? userData.name : userData.login}</span>
             {
+              userStore.currentUser && 
               userData.id === userStore.currentUser.id && 
               <EditOutlined style={{color: "#6B6B6B", fontSize: '13px'}} onClick={() => setModalOpen(true)}/>
             }

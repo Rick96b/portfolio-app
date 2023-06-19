@@ -41,7 +41,10 @@ export default function MainFooter({
       key: '3',
       icon: <img src={Exit} alt='exit'/>,
       label: 'Выйти',
-      onClick: () => userStore.setCurrentUser(null)
+      onClick: () => {
+        localStorage.clear()
+        userStore.setCurrentUser(null)
+      }
     },
   ];
   return (

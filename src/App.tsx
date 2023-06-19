@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import styles from './App.module.scss';
 import { Home, Profile } from 'pages';
-import { MainFooter, MainHeader, NewPasswordAcceptedModal } from 'components';
+import { Loader, MainFooter, MainHeader, NewPasswordAcceptedModal } from 'components';
 import { SignInModal, SignUpModal, PasswordRecoveryModal, AddNewProjectModal } from 'containers';
 import { observer } from 'mobx-react-lite';
 import { userStore } from 'store';
